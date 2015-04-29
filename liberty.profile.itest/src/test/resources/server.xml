@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <featureManager>
+        <feature>jsp-2.2</feature>
+	<feature>ejbLite-3.1</feature>
+        <feature>jca-1.6</feature>
+        <feature>jndi-1.0</feature>
+        <feature>jaxrs-1.1</feature>
+    </featureManager>
+
+    <!-- resourceAdapter autoStart="true" id="ra" location="../../../../../../target/ra-0.0.1-SNAPSHOT.rar"/ -->
+	
+    <connectionFactory jndiName="eis/echo">
+        <properties.ra />
+    </connectionFactory>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="*"
+                  httpPort="8080"
+                  httpsPort="${https.port}" />
+
+	<webContainer deferServletLoad="false"/>
+
+	<!-- application location="../../../../../../target/ws-0.0.1-SNAPSHOT.war" autoStart="true" context-root="test" type="war"/ -->
+	<!-- logging traceSpecification="*=audit:org.*=all"/-->
+</server>
