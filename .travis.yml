@@ -1,4 +1,7 @@
 language: java
 
+install:
+ - echo "skip this step"
+
 script:
- mvn verify
+ - mvn verify
