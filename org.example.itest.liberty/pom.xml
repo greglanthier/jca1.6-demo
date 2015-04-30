@@ -6,7 +6,7 @@
 		<artifactId>jca-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>liberty.profile.itest</artifactId>
+	<artifactId>org.example.itest.liberty</artifactId>
 	<name>JCA 1.6 Demo Project Deployed to Liberty Profile</name>
 	<packaging>pom</packaging>
 	<build>

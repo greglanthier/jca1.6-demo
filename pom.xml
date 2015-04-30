@@ -51,7 +51,7 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>liberty.profile.itest</module>
+		<module>org.example.itest.liberty</module>
 	</modules>
 	<repositories>
 		<repository>
