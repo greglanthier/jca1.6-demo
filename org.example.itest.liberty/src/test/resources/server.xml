@@ -3,7 +3,7 @@
 
     <featureManager>
         <feature>jsp-2.2</feature>
-	<feature>ejbLite-3.1</feature>
+        <feature>ejbLite-3.1</feature>
         <feature>jca-1.6</feature>
         <feature>jndi-1.0</feature>
         <feature>jaxrs-1.1</feature>
