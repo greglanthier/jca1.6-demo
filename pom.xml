@@ -52,6 +52,7 @@
 	</build>
 	<modules>
 		<module>org.example.itest.liberty</module>
+		<module>org.example.ra.echo</module>
 	</modules>
 	<repositories>
 		<repository>

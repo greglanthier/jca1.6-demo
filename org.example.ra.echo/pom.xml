@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.greglanthier</groupId>
+		<artifactId>jca-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.example.ra.echo</artifactId>
+	<name>JCA 1.6 Demo Echo Resource Adapter</name>
+
+	<!-- http://stackoverflow.com/questions/25265840/how-to-add-websphere-application-server-liberty-profile-runtime-dependencies-to -->
+	<dependencies>
+		<!-- refer to http://www-01.ibm.com/support/knowledgecenter/#!/SSAW57_8.5.5/com.ibm.websphere.wdt.doc/topics/localrepo.htm -->
+		<dependency>
+			<groupId>com.ibm.tools.target</groupId>
+			<artifactId>was-liberty</artifactId>
+			<version>LATEST</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-rar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>rar-packaging</id>
+						<goals>
+							<goal>rar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>target/${project.build.finalName}.rar</file>
+									<type>rar</type>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>echora</finalName>
+	</build>
+</project>

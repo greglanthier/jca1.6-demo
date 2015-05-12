@@ -9,6 +9,14 @@
 	<artifactId>org.example.itest.liberty</artifactId>
 	<name>JCA 1.6 Demo Project Deployed to Liberty Profile</name>
 	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.example.ra.echo</artifactId>
+			<version>${project.version}</version>
+			<type>rar</type>
+		</dependency>
+	</dependencies>
 	<build>
 		<testResources>
 			<testResource>
@@ -17,6 +25,29 @@
 			</testResource>
 		</testResources>
 		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>get_ra</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifact>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>org.example.ra.echo</artifactId>
+									<version>${project.version}</version>
+									<type>rar</type>
+								</artifact>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>net.wasdev.wlp.maven.plugins</groupId>
 				<artifactId>liberty-maven-plugin</artifactId>
@@ -37,7 +68,7 @@
 						<configuration>
 							<features>
 								<acceptLicense>true</acceptLicense>
-								<!--whenFileExists>replace</whenFileExists-->
+								<!--whenFileExists>replace</whenFileExists -->
 								<feature>jca-1.6</feature>
 								<feature>jndi-1.0</feature>
 							</features>
@@ -80,7 +111,6 @@
 						<feature>jca-1.6</feature>
 						<feature>jndi-1.0</feature>
 					</features>
-
 				</configuration>
 			</plugin>
 		</plugins>
