@@ -2,6 +2,7 @@
 .settings
 .project
 target
+_build
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
