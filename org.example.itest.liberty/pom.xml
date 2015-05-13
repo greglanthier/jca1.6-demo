@@ -88,6 +88,7 @@
 							<jvmOptions>
 								<param>-Xmx768m</param>
 							</jvmOptions>
+							<clean>true</clean>
 						</configuration>
 					</execution>
 					<execution>
