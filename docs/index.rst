@@ -11,11 +11,13 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   introduction
 
 
 Indices and tables
 ==================
 
+* :ref:introduction
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
