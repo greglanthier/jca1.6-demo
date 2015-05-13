@@ -16,9 +16,11 @@ to accomplish the following tasks.
   * Properly deal with threads in Web applications.
 		*Allocating threads in Web applications is usally considered a no-no.  Using Resource Adapters, however,
 		developers can make use of resource adapter WorkManager objects to submit work to be executed
-		in a background thread.  This is compelling because it a) allows the container to maintain tight control
-		over the number of threads devoted to user code, and b) provides more robust resource adapter & container
-		life cycle event handling (startup & shutdown).*
+		in a background thread.  This is compelling because it*
+		
+		*a) allows the container to maintain tight control over the number of threads devoted to user code, and*
+		
+		*b) provides more robust resource adapter & container life cycle event handling (startup & shutdown).*
 		
 		*More on this later.*
 		
