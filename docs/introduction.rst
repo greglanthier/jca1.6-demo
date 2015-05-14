@@ -10,7 +10,7 @@ JCA (Java Connector Architecture) is one of the standard set of features JEE com
 
 JCA gives a resource adapter developer a way to package a set of classes and native liberaries that allows any JEE application container to interact with an Enterprise Information Systems.
 
-In addition to being a convinient way to deliver code required to access remote systems JCA also specifies was
+In addition to being a convinient way to deliver code required to access remote systems JCA also specifies ways
 to accomplish the following tasks.
 
   * Properly deal with threads in Web applications.
