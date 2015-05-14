@@ -32,7 +32,7 @@
 						<id>get_ra</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<goal>copy</goal>
+							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
 							<artifactItems>
