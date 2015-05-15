@@ -21,3 +21,7 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+.. uml::
+
+   Foo <|-- Baz
+
