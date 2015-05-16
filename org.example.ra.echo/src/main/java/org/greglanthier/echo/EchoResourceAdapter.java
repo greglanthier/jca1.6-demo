@@ -10,34 +10,39 @@ import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.resource.spi.work.WorkManager;
 import javax.transaction.xa.XAResource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Connector
 public class EchoResourceAdapter implements ResourceAdapter {
+
+	private static final transient Logger LOG = LoggerFactory.getLogger( EchoResourceAdapter.class );
 
 	@SuppressWarnings("unused")
 	private WorkManager m_workManager;
 
 	@Override
-	public void start(BootstrapContext ctx)
+	public void start( final BootstrapContext ctx )
 			throws ResourceAdapterInternalException {
-		System.out.println( "start: " + ctx );
+		LOG.info( "start" );
 		m_workManager = ctx.getWorkManager();
 	}
 
 	@Override
 	public void stop() {
-		System.out.println( "stop" );
+		LOG.info( "stop" );
 	}
 
 	@Override
 	public void endpointActivation( MessageEndpointFactory endpointFactory,
 			ActivationSpec spec ) throws ResourceException {
-		System.out.println( "endpointActivation" );
+		LOG.info( "endpointActivation" );
 	}
 
 	@Override
 	public void endpointDeactivation( MessageEndpointFactory endpointFactory,
 			ActivationSpec spec ) {
-		System.out.println( "endpointDeactivation" );
+		LOG.info( "endpointDeactivation" );
 	}
 
 	@Override

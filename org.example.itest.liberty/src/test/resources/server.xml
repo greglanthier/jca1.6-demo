@@ -10,7 +10,9 @@
     </featureManager>
 
     <resourceAdapter autoStart="true" id="ra" location="../../../../../../target/org.example.ra.echo-0.0.1-SNAPSHOT.rar"/>
-	
+
+	<logging consoleLogLevel="INFO" traceSpecification="*=info=enabled" />
+
     <connectionFactory jndiName="eis/echo">
         <properties.ra />
     </connectionFactory>
