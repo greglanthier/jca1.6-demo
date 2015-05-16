@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionFactory;
-import javax.resource.cci.ConnectionMetaData;
 import javax.resource.cci.Interaction;
 import javax.resource.cci.Record;
 import javax.servlet.ServletException;

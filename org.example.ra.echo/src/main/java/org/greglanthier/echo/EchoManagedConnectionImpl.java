@@ -15,7 +15,7 @@ import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EchoManagedConnectionImpl implements EchoManagedConnection {
+public class EchoManagedConnectionImpl implements EchoManagedConnection, ManagedConnectionMetaData {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( EchoManagedConnectionImpl.class );
 	
@@ -36,9 +36,6 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 	@Override
 	public void cleanup() throws ResourceException {
 		LOG.info( this + "#cleanup()" );
-//		for ( ConnectionEventListener l : m_listeners ) {
-//			l.connectionClosed( new ConnectionEvent( this, ConnectionEvent.CONNECTION_CLOSED ) );
-//		}
 	}
 
 	@Override
@@ -81,8 +78,8 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	@Override
 	public ManagedConnectionMetaData getMetaData() throws ResourceException {
-		// TODO Auto-generated method stub
-		return null;
+		LOG.info( this + "#getMetaData()" );
+		return this;
 	}
 
 	@Override
@@ -101,5 +98,25 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 	public boolean equals(Object obj) {
 		LOG.info( this + "#equals( {} )", obj );
 		return super.equals(obj);
+	}
+
+	@Override
+	public String getEISProductName() throws ResourceException {
+		return "echo";
+	}
+
+	@Override
+	public String getEISProductVersion() throws ResourceException {
+		return "0.0.1";
+	}
+
+	@Override
+	public int getMaxConnections() throws ResourceException {
+		return 0;
+	}
+
+	@Override
+	public String getUserName() throws ResourceException {
+		return "echo_user";
 	}
 }

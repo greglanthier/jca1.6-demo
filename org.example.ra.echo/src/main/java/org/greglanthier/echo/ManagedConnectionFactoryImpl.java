@@ -69,6 +69,7 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, V
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Set getInvalidConnections(Set connectionSet)
 			throws ResourceException {
