@@ -23,6 +23,7 @@ public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
 	ConnectionManager cm;
 
 	public EchoConnectionFactoryImpl( final ManagedConnectionFactory _mcf, final ConnectionManager _cm ) {
+		LOG.info( this + "( {}, {} )", _mcf, _cm );
 		this.mcf = _mcf;
 		this.cm = _cm;
 	}

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionFactory;
+import javax.resource.cci.ConnectionMetaData;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class MyServlet extends HttpServlet {
 		Connection con = null;
 		try {
 			con = factory.getConnection();
-			System.out.println("got a connection: " + con);
+			resp.getWriter().println("Got connection >" + con + "<");
 		} catch (ResourceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

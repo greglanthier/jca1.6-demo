@@ -27,6 +27,8 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 
 	private static final long serialVersionUID = 1L;
 
+	ConnectionManager m_connectionManager;
+
 	@Override
 	public Object createConnectionFactory(ConnectionManager cxManager)
 			throws ResourceException {
@@ -52,11 +54,9 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 	public ManagedConnection matchManagedConnections(Set connectionSet,
 			Subject subject, ConnectionRequestInfo cxRequestInfo)
 			throws ResourceException {
-		System.out.println("matchManagedConnection");
-		System.out.println( Arrays.toString( connectionSet.toArray() ) );
-		System.out.println( "Subject: " + subject );
-		System.out.println( "ConnectionRequestInfo: " + cxRequestInfo );
-		return null;
+		ManagedConnection answer = (ManagedConnection) connectionSet.iterator().next();
+		LOG.info( this + "#matchManagedConnection( {}, {}, {} ): {}", connectionSet, subject, cxRequestInfo, answer );
+		return answer;
 	}
 
 	@Override
