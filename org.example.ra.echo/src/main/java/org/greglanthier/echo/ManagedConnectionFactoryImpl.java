@@ -12,6 +12,9 @@ import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
 import javax.security.auth.Subject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @ConnectionDefinition(
 		connectionFactory=org.greglanthier.echo.EchoConnectionFactory.class,
 		connectionFactoryImpl=org.greglanthier.echo.EchoConnectionFactoryImpl.class,
@@ -20,26 +23,27 @@ import javax.security.auth.Subject;
 		)
 public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 
+	private static final transient Logger LOG = LoggerFactory.getLogger( ManagedConnectionFactoryImpl.class );
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public Object createConnectionFactory(ConnectionManager cxManager)
 			throws ResourceException {
+		LOG.info( this + "#createConnectionFactory( {} )", cxManager );
 		return new EchoConnectionFactoryImpl( this, cxManager );
 	}
 
 	@Override
 	public Object createConnectionFactory() throws ResourceException {
-		System.out.println("createConnectionFactory");
+		LOG.info( this + "#createConnectionFactory( )" );
 		return null;
 	}
 
 	@Override
 	public ManagedConnection createManagedConnection(Subject subject,
 			ConnectionRequestInfo cxRequestInfo) throws ResourceException {
-		System.out.println("createManagedConnection 1");
-		
-		// Create a managed connection instance (not the ConnectionImpl )
+		LOG.info( this + "#createManagedConnection( {}, {} )", subject, cxRequestInfo );
 		return new EchoManagedConnectionImpl();
 	}
 

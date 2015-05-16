@@ -8,10 +8,14 @@ import javax.resource.cci.ConnectionSpec;
 import javax.resource.cci.RecordFactory;
 import javax.resource.cci.ResourceAdapterMetaData;
 import javax.resource.spi.ConnectionManager;
-import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
+
+	private static final transient Logger LOG = LoggerFactory.getLogger( EchoConnectionFactoryImpl.class );
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +29,7 @@ public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
 
 	@Override
 	public Connection getConnection() throws ResourceException {
-		System.out.println( "CFImpl#getConnection()");
+		LOG.info( this + "#getConnection()" );
 		EchoManagedConnection c = (EchoManagedConnection) cm.allocateConnection( mcf, null );
 		return new EchoConnection( c );
 	}
@@ -33,7 +37,7 @@ public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
 	@Override
 	public Connection getConnection(ConnectionSpec properties)
 			throws ResourceException {
-		System.out.println( "CFImpl#getConnection(prop)");
+		LOG.info( this + "#getConnection( properties )" );
 		return getConnection();
 	}
 

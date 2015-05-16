@@ -1,21 +1,30 @@
 package org.greglanthier.echo;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.resource.ResourceException;
+import javax.resource.spi.ConnectionEvent;
 import javax.resource.spi.ConnectionEventListener;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnectionMetaData;
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
+	private static final transient Logger LOG = LoggerFactory.getLogger( EchoManagedConnectionImpl.class );
+	
+	private List<ConnectionEventListener> m_connectionEventListeners = new ArrayList<ConnectionEventListener>();
+	
 	@Override
 	public Object getConnection(Subject subject,
 			ConnectionRequestInfo cxRequestInfo) throws ResourceException {
-		// TODO Auto-generated method stub
-		System.out.println( this + "#getConnection");
+		LOG.info( this + "#getConnection" );
 		return this;
 	}
 
@@ -27,8 +36,10 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	@Override
 	public void cleanup() throws ResourceException {
-		// TODO Auto-generated method stub
-		System.out.println( this + "#cleanup");
+		LOG.info( this + "#cleanup()" );
+		for ( ConnectionEventListener l : m_connectionEventListeners ) {
+			l.connectionClosed( new ConnectionEvent( this, ConnectionEvent.CONNECTION_CLOSED ) );
+		}
 	}
 
 	@Override
@@ -39,14 +50,14 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	@Override
 	public void addConnectionEventListener(ConnectionEventListener listener) {
-		// TODO Auto-generated method stub
-		System.out.println( this + "#addConnectionEventListener");
+		LOG.info( this + "#addConnectionEventListener( {} )", listener );
+		m_connectionEventListeners.add( listener );
 	}
 
 	@Override
 	public void removeConnectionEventListener(ConnectionEventListener listener) {
-		// TODO Auto-generated method stub
-		System.out.println( this + "#removeConnectionEventListener");
+		LOG.info( this + "#removeConnectionEventListener( {} )", listener );
+		m_connectionEventListeners.remove( listener );
 	}
 
 	@Override
