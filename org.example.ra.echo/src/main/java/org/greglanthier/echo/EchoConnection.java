@@ -51,4 +51,9 @@ public class EchoConnection implements Connection {
 		m_mc.cleanup();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		LOG.info( this + "#equals( {} )", obj );
+		return super.equals(obj);
+	}
 }

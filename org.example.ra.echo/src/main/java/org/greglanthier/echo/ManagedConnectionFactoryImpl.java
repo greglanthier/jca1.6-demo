@@ -1,7 +1,6 @@
 package org.greglanthier.echo;
 
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Set;
 
 import javax.resource.ResourceException;
@@ -10,6 +9,7 @@ import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
+import javax.resource.spi.ValidatingManagedConnectionFactory;
 import javax.security.auth.Subject;
 
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 		connection=org.greglanthier.echo.spi.EchoManagedConnection.class,
 		connectionImpl=org.greglanthier.echo.EchoManagedConnectionImpl.class
 		)
-public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
+public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, ValidatingManagedConnectionFactory {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( ManagedConnectionFactoryImpl.class );
 
@@ -54,7 +54,7 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 	public ManagedConnection matchManagedConnections(Set connectionSet,
 			Subject subject, ConnectionRequestInfo cxRequestInfo)
 			throws ResourceException {
-		ManagedConnection answer = (ManagedConnection) connectionSet.iterator().next();
+		ManagedConnection answer = null;//(ManagedConnection) connectionSet.iterator().next();
 		LOG.info( this + "#matchManagedConnection( {}, {}, {} ): {}", connectionSet, subject, cxRequestInfo, answer );
 		return answer;
 	}
@@ -67,6 +67,13 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 	@Override
 	public PrintWriter getLogWriter() throws ResourceException {
 		return null;
+	}
+
+	@Override
+	public Set getInvalidConnections(Set connectionSet)
+			throws ResourceException {
+		LOG.info( this + "#getInvalidConnections( {} ): {}", connectionSet, connectionSet );
+		return connectionSet;
 	}
 
 }

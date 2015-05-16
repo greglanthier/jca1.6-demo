@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.resource.ResourceException;
-import javax.resource.spi.ConnectionEvent;
 import javax.resource.spi.ConnectionEventListener;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnectionMetaData;
@@ -20,7 +19,7 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( EchoManagedConnectionImpl.class );
 	
-	private List<ConnectionEventListener> m_connectionEventListeners = new ArrayList<ConnectionEventListener>();
+	private List<ConnectionEventListener> m_listeners = new ArrayList<ConnectionEventListener>();
 	
 	@Override
 	public Object getConnection(Subject subject,
@@ -31,34 +30,39 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	@Override
 	public void destroy() throws ResourceException {
-		// TODO Auto-generated method stub
-		System.out.println( this + "#destroy");
+		LOG.info( this + "#destroy");
 	}
 
 	@Override
 	public void cleanup() throws ResourceException {
 		LOG.info( this + "#cleanup()" );
-		for ( ConnectionEventListener l : m_connectionEventListeners ) {
-			l.connectionClosed( new ConnectionEvent( this, ConnectionEvent.CONNECTION_CLOSED ) );
-		}
+//		for ( ConnectionEventListener l : m_listeners ) {
+//			l.connectionClosed( new ConnectionEvent( this, ConnectionEvent.CONNECTION_CLOSED ) );
+//		}
 	}
 
 	@Override
-	public void associateConnection(Object connection) throws ResourceException {
+	public void associateConnection( final Object connection ) throws ResourceException {
 		// TODO Auto-generated method stub
 		System.out.println( this + "#associateConnection");
 	}
 
 	@Override
-	public void addConnectionEventListener(ConnectionEventListener listener) {
+	public void addConnectionEventListener( final ConnectionEventListener listener ) {
 		LOG.info( this + "#addConnectionEventListener( {} )", listener );
-		m_connectionEventListeners.add( listener );
+		synchronized ( m_listeners ) {
+			if ( ! m_listeners.contains( listener ) ) {
+				m_listeners.add( listener );
+			}
+		}
 	}
 
 	@Override
-	public void removeConnectionEventListener(ConnectionEventListener listener) {
+	public void removeConnectionEventListener( final ConnectionEventListener listener ) {
 		LOG.info( this + "#removeConnectionEventListener( {} )", listener );
-		m_connectionEventListeners.remove( listener );
+		synchronized ( m_listeners ) {
+			m_listeners.remove( listener );	
+		}
 	}
 
 	@Override
@@ -91,5 +95,11 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection {
 	public PrintWriter getLogWriter() throws ResourceException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		LOG.info( this + "#equals( {} )", obj );
+		return super.equals(obj);
 	}
 }
