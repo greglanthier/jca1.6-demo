@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.resource.ResourceException;
+import javax.resource.spi.ConnectionEvent;
 import javax.resource.spi.ConnectionEventListener;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnectionMetaData;
@@ -38,6 +39,14 @@ public class EchoManagedConnectionImpl implements EchoManagedConnection, Managed
 		LOG.info( this + "#cleanup()" );
 	}
 
+	protected void sendEvent( final ConnectionEvent event ) {
+		synchronized ( m_listeners ) {
+			for ( ConnectionEventListener listener : m_listeners ) {
+				listener.connectionClosed( event );
+			}
+		}
+	}
+	
 	@Override
 	public void associateConnection( final Object connection ) throws ResourceException {
 		// TODO Auto-generated method stub

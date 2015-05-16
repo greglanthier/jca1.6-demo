@@ -54,7 +54,7 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, V
 	public ManagedConnection matchManagedConnections(Set connectionSet,
 			Subject subject, ConnectionRequestInfo cxRequestInfo)
 			throws ResourceException {
-		ManagedConnection answer = null;//(ManagedConnection) connectionSet.iterator().next();
+		ManagedConnection answer = (ManagedConnection) connectionSet.iterator().next();
 		LOG.info( this + "#matchManagedConnection( {}, {}, {} ): {}", connectionSet, subject, cxRequestInfo, answer );
 		return answer;
 	}

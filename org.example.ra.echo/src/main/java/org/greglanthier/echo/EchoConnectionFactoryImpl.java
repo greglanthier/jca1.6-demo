@@ -11,7 +11,6 @@ import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ManagedConnectionFactory;
 
 import org.greglanthier.echo.spi.EchoConnectionFactory;
-import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +32,7 @@ public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
 	@Override
 	public Connection getConnection() throws ResourceException {
 		LOG.info( this + "#getConnection()" );
-		EchoManagedConnection c = (EchoManagedConnection) cm.allocateConnection( mcf, null );
+		EchoManagedConnectionImpl c = (EchoManagedConnectionImpl) cm.allocateConnection( mcf, null );
 		return new EchoConnection( c );
 	}
 

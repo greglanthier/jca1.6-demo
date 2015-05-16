@@ -9,8 +9,8 @@ import javax.resource.cci.LocalTransaction;
 import javax.resource.cci.Record;
 import javax.resource.cci.ResourceWarning;
 import javax.resource.cci.ResultSetInfo;
+import javax.resource.spi.ConnectionEvent;
 
-import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,9 +18,9 @@ public class EchoConnection implements Connection {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( EchoConnection.class );
 
-	private EchoManagedConnection m_mc;
+	private EchoManagedConnectionImpl m_mc;
 
-	public EchoConnection( final EchoManagedConnection _mc ) {
+	public EchoConnection( final EchoManagedConnectionImpl _mc ) {
 		LOG.info( this + "( {} )", _mc );
 		this.m_mc = _mc;
 	}
@@ -123,7 +123,9 @@ public class EchoConnection implements Connection {
 	@Override
 	public void close() throws ResourceException {
 		LOG.info( this + "#close()" );
-		m_mc.cleanup();
+		ConnectionEvent event = new ConnectionEvent( m_mc, ConnectionEvent.CONNECTION_CLOSED );
+		event.setConnectionHandle( this );
+		m_mc.sendEvent( event );
 	}
 
 	@Override
