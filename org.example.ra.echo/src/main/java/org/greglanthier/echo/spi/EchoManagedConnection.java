@@ -1,4 +1,4 @@
-package org.greglanthier.echo;
+package org.greglanthier.echo.spi;
 
 import javax.resource.spi.ManagedConnection;
 

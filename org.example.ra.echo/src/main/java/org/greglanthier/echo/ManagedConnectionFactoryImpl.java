@@ -16,9 +16,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ConnectionDefinition(
-		connectionFactory=org.greglanthier.echo.EchoConnectionFactory.class,
+		connectionFactory=org.greglanthier.echo.spi.EchoConnectionFactory.class,
 		connectionFactoryImpl=org.greglanthier.echo.EchoConnectionFactoryImpl.class,
-		connection=org.greglanthier.echo.EchoManagedConnection.class,
+		connection=org.greglanthier.echo.spi.EchoManagedConnection.class,
 		connectionImpl=org.greglanthier.echo.EchoManagedConnectionImpl.class
 		)
 public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {

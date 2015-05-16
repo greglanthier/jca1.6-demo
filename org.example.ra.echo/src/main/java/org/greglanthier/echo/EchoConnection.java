@@ -7,6 +7,7 @@ import javax.resource.cci.Interaction;
 import javax.resource.cci.LocalTransaction;
 import javax.resource.cci.ResultSetInfo;
 
+import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

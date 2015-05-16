@@ -10,6 +10,8 @@ import javax.resource.cci.ResourceAdapterMetaData;
 import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ManagedConnectionFactory;
 
+import org.greglanthier.echo.spi.EchoConnectionFactory;
+import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

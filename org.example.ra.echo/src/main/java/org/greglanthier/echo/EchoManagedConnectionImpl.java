@@ -12,6 +12,7 @@ import javax.resource.spi.ManagedConnectionMetaData;
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 
+import org.greglanthier.echo.spi.EchoManagedConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
