@@ -1,4 +1,4 @@
-package com.wombat.ra;
+package org.greglanthier.echo;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
@@ -8,16 +8,17 @@ import javax.resource.cci.ConnectionSpec;
 import javax.resource.cci.RecordFactory;
 import javax.resource.cci.ResourceAdapterMetaData;
 import javax.resource.spi.ConnectionManager;
+import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
 
-public class CFImpl implements CF {
+public class EchoConnectionFactoryImpl implements EchoConnectionFactory {
 
 	private static final long serialVersionUID = 1L;
 
 	ManagedConnectionFactory mcf;
 	ConnectionManager cm;
 
-	public CFImpl( final ManagedConnectionFactory _mcf, final ConnectionManager _cm ) {
+	public EchoConnectionFactoryImpl( final ManagedConnectionFactory _mcf, final ConnectionManager _cm ) {
 		this.mcf = _mcf;
 		this.cm = _cm;
 	}
@@ -25,7 +26,8 @@ public class CFImpl implements CF {
 	@Override
 	public Connection getConnection() throws ResourceException {
 		System.out.println( "CFImpl#getConnection()");
-		return (Connection) cm.allocateConnection(mcf, null);
+		EchoManagedConnection c = (EchoManagedConnection) cm.allocateConnection( mcf, null );
+		return new EchoConnection( c );
 	}
 
 	@Override

@@ -18,6 +18,8 @@ public class EchoResourceAdapter implements ResourceAdapter {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( EchoResourceAdapter.class );
 
+	public static final String JNDI_NAME = "eis/echo";
+
 	@SuppressWarnings("unused")
 	private WorkManager m_workManager;
 

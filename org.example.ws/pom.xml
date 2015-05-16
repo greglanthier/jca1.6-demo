@@ -9,6 +9,22 @@
 	<artifactId>org.example.ws</artifactId>
 	<packaging>war</packaging>
 	<name>JCA 1.6 Demo Web Project</name>
+	<!-- http://stackoverflow.com/questions/25265840/how-to-add-websphere-application-server-liberty-profile-runtime-dependencies-to -->
+	<dependencies>
+		<!-- refer to http://www-01.ibm.com/support/knowledgecenter/#!/SSAW57_8.5.5/com.ibm.websphere.wdt.doc/topics/localrepo.htm -->
+		<dependency>
+			<groupId>com.ibm.tools.target</groupId>
+			<artifactId>was-liberty</artifactId>
+			<version>LATEST</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.example.ra.echo</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

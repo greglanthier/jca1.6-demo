@@ -12,14 +12,11 @@ import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
 import javax.security.auth.Subject;
 
-import com.wombat.ra.CFImpl;
-import com.wombat.ra.ConnectionImpl;
-
 @ConnectionDefinition(
-		connectionFactory=com.wombat.ra.CF.class,
-		connectionFactoryImpl=com.wombat.ra.CFImpl.class,
-		connection=com.wombat.ra.Connection.class,
-		connectionImpl=com.wombat.ra.ConnectionImpl.class
+		connectionFactory=org.greglanthier.echo.EchoConnectionFactory.class,
+		connectionFactoryImpl=org.greglanthier.echo.EchoConnectionFactoryImpl.class,
+		connection=org.greglanthier.echo.EchoManagedConnection.class,
+		connectionImpl=org.greglanthier.echo.EchoManagedConnectionImpl.class
 		)
 public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 
@@ -28,7 +25,7 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 	@Override
 	public Object createConnectionFactory(ConnectionManager cxManager)
 			throws ResourceException {
-		return new CFImpl( this, cxManager );
+		return new EchoConnectionFactoryImpl( this, cxManager );
 	}
 
 	@Override
@@ -43,7 +40,7 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory {
 		System.out.println("createManagedConnection 1");
 		
 		// Create a managed connection instance (not the ConnectionImpl )
-		return new ConnectionImpl();
+		return new EchoManagedConnectionImpl();
 	}
 
 	@SuppressWarnings("rawtypes")

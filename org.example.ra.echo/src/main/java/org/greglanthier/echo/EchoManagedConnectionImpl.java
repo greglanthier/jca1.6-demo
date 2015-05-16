@@ -1,4 +1,4 @@
-package com.wombat.ra;
+package org.greglanthier.echo;
 
 import java.io.PrintWriter;
 
@@ -9,7 +9,7 @@ import javax.resource.spi.ManagedConnectionMetaData;
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 
-public class ConnectionImpl implements Connection {
+public class EchoManagedConnectionImpl implements EchoManagedConnection {
 
 	@Override
 	public Object getConnection(Subject subject,
