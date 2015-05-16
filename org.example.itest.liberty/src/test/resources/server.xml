@@ -11,6 +11,8 @@
 
     <resourceAdapter autoStart="true" id="ra" location="../../../../../../../org.example.ra.echo/target/echora.rar"/>
 
+	<application location="../../../../../../../org.example.ws/target/ws.war" type="war"/>
+
 	<logging consoleLogLevel="INFO" traceSpecification="*=info=enabled" />
 
     <connectionFactory jndiName="eis/echo">

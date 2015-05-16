@@ -53,6 +53,7 @@
 	<modules>
 		<module>org.example.itest.liberty</module>
 		<module>org.example.ra.echo</module>
+		<module>org.example.ws</module>
 	</modules>
 	<repositories>
 		<repository>
