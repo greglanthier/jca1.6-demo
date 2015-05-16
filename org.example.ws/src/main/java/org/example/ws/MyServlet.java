@@ -7,6 +7,8 @@ import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionFactory;
 import javax.resource.cci.ConnectionMetaData;
+import javax.resource.cci.Interaction;
+import javax.resource.cci.Record;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +32,9 @@ public class MyServlet extends HttpServlet {
 		try {
 			con = factory.getConnection();
 			resp.getWriter().println("Got connection >" + con + "<");
+			Interaction interaction = con.createInteraction();
+			Record x = interaction.execute(null, null);
+			resp.getWriter().println("Got response >" + x.getRecordName() + "<");
 		} catch (ResourceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

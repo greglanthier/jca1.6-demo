@@ -4,7 +4,10 @@ import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionMetaData;
 import javax.resource.cci.Interaction;
+import javax.resource.cci.InteractionSpec;
 import javax.resource.cci.LocalTransaction;
+import javax.resource.cci.Record;
+import javax.resource.cci.ResourceWarning;
 import javax.resource.cci.ResultSetInfo;
 
 import org.greglanthier.echo.spi.EchoManagedConnection;
@@ -25,7 +28,79 @@ public class EchoConnection implements Connection {
 	@Override
 	public Interaction createInteraction() throws ResourceException {
 		// TODO Auto-generated method stub
-		return null;
+		return new Interaction() {
+			
+			@Override
+			public ResourceWarning getWarnings() throws ResourceException {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Connection getConnection() {
+				return EchoConnection.this;
+			}
+			
+			@Override
+			public boolean execute(InteractionSpec ispec, Record input, Record output)
+					throws ResourceException {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public Record execute(InteractionSpec ispec, Record input)
+					throws ResourceException {
+				return new Record() {
+					
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void setRecordShortDescription(String description) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void setRecordName(String name) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public String getRecordShortDescription() {
+						// TODO Auto-generated method stub
+						return null;
+					}
+					
+					@Override
+					public String getRecordName() {
+						return ":-)";
+					}
+					
+					@Override
+					public Object clone() throws CloneNotSupportedException {
+						// TODO Auto-generated method stub
+						return super.clone();
+					}
+				};
+			}
+			
+			@Override
+			public void close() throws ResourceException {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void clearWarnings() throws ResourceException {
+				// TODO Auto-generated method stub
+				
+			}
+		};
 	}
 
 	@Override
