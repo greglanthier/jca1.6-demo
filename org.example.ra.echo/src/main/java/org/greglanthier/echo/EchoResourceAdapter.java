@@ -48,7 +48,7 @@ public class EchoResourceAdapter implements ResourceAdapter {
 	@Override
 	public XAResource[] getXAResources(ActivationSpec[] specs)
 			throws ResourceException {
-		System.out.println( "getXAResources" );
+		LOG.info( "getXAResources" );
 		return null;
 	}
 
