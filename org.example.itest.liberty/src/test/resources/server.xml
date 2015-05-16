@@ -9,7 +9,7 @@
         <feature>jaxrs-1.1</feature>
     </featureManager>
 
-    <resourceAdapter autoStart="true" id="ra" location="../../../../../../target/org.example.ra.echo-0.0.1-SNAPSHOT.rar"/>
+    <resourceAdapter autoStart="true" id="ra" location="../../../../../../../org.example.ra.echo/target/echora.rar"/>
 
 	<logging consoleLogLevel="INFO" traceSpecification="*=info=enabled" />
 
