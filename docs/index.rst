@@ -13,7 +13,7 @@ Contents:
 
    introduction
    interface
-   sequence
+   diagrams
 
 
 Indices and tables
