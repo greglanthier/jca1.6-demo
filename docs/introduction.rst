@@ -6,21 +6,21 @@ This site is intended to serve as an introduction to JCA 1.6 (otherwise known as
 What is JCA?
 ------------
 
-JCA (Java Connector Architecture) is one of the standard set of features JEE compilant runtime containers must support.
+JCA (Java Connector Architecture) is one of the standard set of features JEE compliant runtime containers must support.
 
-JCA gives a resource adapter developer a way to package a set of classes and native liberaries that allows any JEE application container to interact with an Enterprise Information Systems.
+JCA gives a resource adapter developer a way to package a set of classes and native libraries that allows any JEE application container to interact with an Enterprise Information Systems.
 
-In addition to being a convinient way to deliver code required to access remote systems JCA also specifies ways
+In addition to being a convenient way to deliver code required to access remote systems JCA also specifies ways
 to accomplish the following tasks.
 
   * Properly deal with threads in Web applications.
-		*Allocating threads in Web applications is usally considered a no-no.  Using Resource Adapters, however,
+		*Allocating threads in Web applications is usually considered a no-no.  Using Resource Adapters, however,
 		developers can make use of resource adapter WorkManager objects to submit work to be executed
 		in a background thread.  This is compelling because it*
 		
 		*a) allows the container to maintain tight control over the number of threads devoted to user code, and*
 		
-		*b) provides more robust resource adapter & container life cycle event handling (startup & shutdown).*
+		*b) provides more robust resource adapter & container life cycle event handling (start up & shutdown).*
 		
 		*More on this later.*
 		
