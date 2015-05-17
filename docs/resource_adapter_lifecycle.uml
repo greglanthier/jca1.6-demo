@@ -1,0 +1,11 @@
+@startuml
+[*] -d-> undeployed
+
+undeployed -r-> deploying
+deploying -r-> deployed
+deployed -r-> undeploying
+undeploying -d-> undeployed
+
+undeployed --> [*]
+
+@enduml

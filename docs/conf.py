@@ -31,7 +31,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [ 'sphinxcontrib.plantuml' ]
+extensions = [ 'sphinxcontrib.plantuml', 'sphinxcontrib.spelling' ]
 
 plantuml = 'java -jar ./plantuml.jar'
 
