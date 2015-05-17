@@ -92,25 +92,3 @@ Running
 	activate ManagedConnection
 	Container -> ManagedConnection: addConnectionEventListener
 
-This is some text
-	
-	[INFO    ] org.greglanthier.echo.ManagedConnectionFactoryImpl@492f0ec3#createConnectionFactory( [ConnectionManager]@7bedccdd
-	JNDI Name <eis/echo>
-	shareable <true>
-	 )
-	[INFO    ] org.greglanthier.echo.EchoConnectionFactoryImpl@1d65250( org.greglanthier.echo.ManagedConnectionFactoryImpl@492f0ec3, [ConnectionManager]@7bedccdd
-	JNDI Name <eis/echo>
-	shareable <true>
-	 )
-	[INFO    ] SRVE0242I: [ws] [/ws] [org.example.ws.MyServlet]: Initialization successful.
-	[INFO    ] org.greglanthier.echo.EchoConnectionFactoryImpl@1d65250#getConnection()
-	[INFO    ] org.greglanthier.echo.ManagedConnectionFactoryImpl@492f0ec3#createManagedConnection( null, null )
-	[INFO    ] org.greglanthier.echo.EchoManagedConnectionImpl@668ce670#addConnectionEventListener( com.ibm.ejs.j2c.ConnectionEventListener@2c6cf7a9 )
-	[INFO    ] org.greglanthier.echo.ManagedConnectionFactoryImpl@492f0ec3#matchManagedConnection( [org.greglanthier.echo.EchoManagedConnectionImpl@668ce670], null, null ): null
-	[INFO    ] org.greglanthier.echo.ManagedConnectionFactoryImpl@492f0ec3#createManagedConnection( null, null )
-	[INFO    ] org.greglanthier.echo.EchoManagedConnectionImpl@6a23f3c7#addConnectionEventListener( com.ibm.ejs.j2c.ConnectionEventListener@5e59c441 )
-	[INFO    ] org.greglanthier.echo.EchoManagedConnectionImpl@668ce670#getConnection
-	[INFO    ] org.greglanthier.echo.EchoConnection@1b9575e6( org.greglanthier.echo.EchoManagedConnectionImpl@668ce670 )
-	[INFO    ] org.greglanthier.echo.EchoConnection@1b9575e6#close()
-	[INFO    ] org.greglanthier.echo.EchoManagedConnectionImpl@668ce670#cleanup()
-	
