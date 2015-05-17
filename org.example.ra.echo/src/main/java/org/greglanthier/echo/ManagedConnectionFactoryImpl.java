@@ -1,6 +1,7 @@
 package org.greglanthier.echo;
 
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.resource.ResourceException;
@@ -9,6 +10,8 @@ import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnection;
 import javax.resource.spi.ManagedConnectionFactory;
+import javax.resource.spi.ResourceAdapter;
+import javax.resource.spi.ResourceAdapterAssociation;
 import javax.resource.spi.ValidatingManagedConnectionFactory;
 import javax.security.auth.Subject;
 
@@ -21,7 +24,7 @@ import org.slf4j.LoggerFactory;
 		connection=org.greglanthier.echo.spi.EchoManagedConnection.class,
 		connectionImpl=org.greglanthier.echo.EchoManagedConnectionImpl.class
 		)
-public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, ValidatingManagedConnectionFactory {
+public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, ResourceAdapterAssociation, ValidatingManagedConnectionFactory {
 
 	private static final transient Logger LOG = LoggerFactory.getLogger( ManagedConnectionFactoryImpl.class );
 
@@ -54,7 +57,21 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, V
 	public ManagedConnection matchManagedConnections(Set connectionSet,
 			Subject subject, ConnectionRequestInfo cxRequestInfo)
 			throws ResourceException {
-		ManagedConnection answer = (ManagedConnection) connectionSet.iterator().next();
+		Iterator iterator = connectionSet.iterator();
+		if ( ! iterator.hasNext() ) {
+			return null;
+		}
+
+		ManagedConnection answer = null;
+		for ( ; iterator.hasNext(); ) {
+			Object next = iterator.next();
+			if ( ! ManagedConnection.class.isAssignableFrom( next.getClass() ) ) {
+				continue;
+			}
+			answer = (ManagedConnection) next;
+			break;
+		}
+
 		LOG.info( this + "#matchManagedConnection( {}, {}, {} ): {}", connectionSet, subject, cxRequestInfo, answer );
 		return answer;
 	}
@@ -75,6 +92,18 @@ public class ManagedConnectionFactoryImpl implements ManagedConnectionFactory, V
 			throws ResourceException {
 		LOG.info( this + "#getInvalidConnections( {} ): {}", connectionSet, connectionSet );
 		return connectionSet;
+	}
+
+	@Override
+	public ResourceAdapter getResourceAdapter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setResourceAdapter(ResourceAdapter ra) throws ResourceException {
+		LOG.info( this + "#setResourceAdapter( {} )", ra );
+
 	}
 
 }
