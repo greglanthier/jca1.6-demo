@@ -1,4 +1,1 @@
 sphinxcontrib-plantuml
-six
-sphinxcontrib-spelling
-pyenchant
