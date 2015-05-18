@@ -5,3 +5,7 @@ install:
 
 script:
  - mvn verify
+
+env:
+  global:
+    secure: Tq2lsOu8qshSyqOCP8BFhNlbmZnBFsUXxoESsn0Kyk6jTZiGmoqrwqAD32Qh+mL/hSzffEqVMltZRXC5jrYKjbulzgKjqfGPn8v5QwKMJXz1QLhRRjn96dKRtFwOId1/rxfIP+SGqad/f8ZPzx0PHgY4uMRG7BDNR33kY135o4A=
