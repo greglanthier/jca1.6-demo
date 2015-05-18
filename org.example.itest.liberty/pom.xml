@@ -115,7 +115,7 @@
 				</executions>
 				<configuration>
 					<install>
-						<licenseCode>L-JTHS-95XRL8</licenseCode>
+						<licenseCode>${env.LIBERTY_LICENSE}/licenseCode>
 						<runtimeUrl>http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/8.5.5.4/wlp-developers-runtime-8.5.5.4.jar</runtimeUrl>
 					</install>
 					<features>
