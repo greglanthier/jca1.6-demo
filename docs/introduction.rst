@@ -14,7 +14,7 @@ In addition to being a convenient way to deliver code required to access remote 
 to accomplish the following tasks.
 
   * Properly deal with threads in Web applications.
-		*Allocating threads in Web applications is usually considered a no-no.  Using Resource Adapters, however,
+		*Allocating threads in Web applications that use EJBs is not allowed by the spec.  Using Resource Adapters, however,
 		developers can make use of resource adapter WorkManager objects to submit work to be executed
 		in a background thread.  This is compelling because it*
 		
