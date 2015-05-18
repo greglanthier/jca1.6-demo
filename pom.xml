@@ -6,6 +6,35 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JCA 1.6 Demo Project Parent</name>
+	<description>This is a sample project demonstrating a based JCA 1.6 connector / resource adapter.</description>
+
+	<inceptionYear>2015</inceptionYear>
+
+	<scm>
+		<connection>scm:git:https://github.com/greglanthier/jca1.6-demo.git</connection>
+		<developerConnection>scm:git:https://github.com/greglanthier/jca1.6-demo.git</developerConnection>
+		<url>https://github.com/greglanthier/jca1.6-demo.git</url>
+	</scm>
+
+	<url>http://jca16-demo.readthedocs.org/en/latest/</url>
+
+	<ciManagement>
+		<system>travis-ca</system>
+		<url>https://travis-ci.org/greglanthier/jca1.6-demo</url>
+	</ciManagement>
+
+	<developers>
+		<developer>
+			<name>Greg Lanthier</name>
+			<id>lanthieg</id>
+			<email>greg.lanthier@gmail.com</email>
+			<roles>
+				<role>Java developer</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+	</developers>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
