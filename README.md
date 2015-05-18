@@ -8,4 +8,38 @@ To run this build locally you need to set an environment variable called LIBERTY
 
 The value for the LIBERTY_LICENSE variable you need is next to the  string **L/N** in the agreement.
 
+For example:
 
+    lappy:jca-parent greg$ pwd
+    /Users/lanthieg/Documents/source/git/jca-parent
+    lappy:jca-parent greg$ export LIBERTY_LICENSE=L-JTXX-XXXXXX
+    lappy:jca-parent greg$ mvn clean verify
+    ...
+    [INFO] Scanning for projects...
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Reactor Build Order:
+    [INFO] 
+    [INFO] JCA 1.6 Demo Project Parent
+    [INFO] JCA 1.6 Demo Echo Resource Adapter
+    [INFO] JCA 1.6 Demo Web Project
+    [INFO] JCA 1.6 Demo Project Deployed to Liberty Profile
+    [INFO]                                                                         
+    [INFO] ------------------------------------------------------------------------
+    ...
+    INFO] Stopping server defaultServer.
+    [INFO] Server defaultServer stopped.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Reactor Summary:
+    [INFO] 
+    [INFO] JCA 1.6 Demo Project Parent ........................ SUCCESS [  1.050 s]
+    [INFO] JCA 1.6 Demo Echo Resource Adapter ................. SUCCESS [ 13.486 s]
+    [INFO] JCA 1.6 Demo Web Project ........................... SUCCESS [  2.475 s]
+    [INFO] JCA 1.6 Demo Project Deployed to Liberty Profile ... SUCCESS [02:24 min]
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 02:42 min
+    [INFO] Finished at: 2015-05-18T15:46:37-04:00
+    [INFO] Final Memory: 22M/53M
+    [INFO] ------------------------------------------------------------------------
+    lappy:jca-parent greg$ 
