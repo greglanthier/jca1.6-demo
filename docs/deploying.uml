@@ -1,0 +1,33 @@
+@startuml
+
+scale 3/3
+hide footbox
+participant "JEE Container" as container
+participant "<<ResourceAdapter>>\nEchoResourceAdapter" as ra
+participant "<<ManagedConnectionFactory>>\n<<ResourceAdapterAssociation>>\n<<ValidatingManagedConnectionFactory>>\nEchoManagedConnectionFactor" as mcf
+
+activate container
+
+... Container Start up ...
+
+container -> ra: start( **BootstrapContext** )
+
+activate ra
+activate mcf
+
+alt implements ResourceAdapterAssociation
+
+container -> mcf: setResourceAdapter( **ResourceAdapter** )
+
+end
+
+activate mcf
+
+... Container Shut down ...
+
+container -> ra: stop
+
+deactivate ra
+deactivate mcf
+
+@enduml

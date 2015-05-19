@@ -36,6 +36,51 @@ and unloaded by an active JEE container.
 
 	@enduml
 
+
+Deploying
+^^^^^^^^^
+
+When a resource adapter is first started by a JEE container it enters the deploying state.
+
+During the deploying state the JEE container will invoke the resource adapter ``start( BootstrapContext )``
+method.  The ``BootstrapContext`` instance contains reference to the container managed `WorkManager <http://docs.oracle.com/javaee/6/api/javax/resource/spi/work/WorkManager.html>`_ instance which allows
+the RA to perform thread management.
+
+.. uml::
+	@startuml
+
+	scale 3/3
+	hide footbox
+	participant "JEE Container" as container
+	participant "<<ResourceAdapter>>\nEchoResourceAdapter" as ra
+	participant "<<ManagedConnectionFactory>>\n<<ResourceAdapterAssociation>>\n<<ValidatingManagedConnectionFactory>>\nEchoManagedConnectionFactor" as mcf
+
+	activate container
+
+	... Container Start up ...
+
+	container -> ra: start( **BootstrapContext** )
+
+	activate ra
+	activate mcf
+
+	alt implements ResourceAdapterAssociation
+
+	container -> mcf: setResourceAdapter( **ResourceAdapter** )
+
+	end
+
+	activate mcf
+
+	... Container Shut down ...
+
+	container -> ra: stop
+
+	deactivate ra
+	deactivate mcf
+
+	@enduml
+
 Deployment
 ----------
 
