@@ -79,7 +79,6 @@
 						<configuration>
 							<features>
 								<acceptLicense>true</acceptLicense>
-								<!--whenFileExists>replace</whenFileExists -->
 								<feature>jca-1.6</feature>
 								<feature>jndi-1.0</feature>
 							</features>
