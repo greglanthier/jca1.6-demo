@@ -44,7 +44,7 @@ When a resource adapter is first started by a JEE container it enters the deploy
 
 During the deploying state the JEE container will invoke the resource adapter ``start( BootstrapContext )``
 method.  The ``BootstrapContext`` instance contains reference to the container managed `WorkManager <http://docs.oracle.com/javaee/6/api/javax/resource/spi/work/WorkManager.html>`_ instance which allows
-the RA to perform thread management.
+the RA to submit threads for execution in a container managed thread executor.
 
 .. uml::
 	@startuml
