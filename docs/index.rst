@@ -13,7 +13,7 @@ Contents:
 
    introduction
    diagrams
-
+   resources
 
 Indices and tables
 ==================
