@@ -10,6 +10,6 @@ Resources
   * `java connector architecture (jca) <https://itdevworld.wordpress.com/2008/08/26/java-connector-architecture-jca/>`_ (2008)
   * `outbound jca connectors introduction <https://itdevworld.wordpress.com/2008/09/01/outbound-jca-connectors-introduction/>`_ (2008)
 
-* A sample JCA connecter project by `Adam Bien <http://about.adam-bien.com>`_ <http://connectorz.adam-bien.com>
+* A sample JCA connecter project by `Adam Bien <http://about.adam-bien.com>`_ <http://connectorz.adam-bien.com> (2013)
 
   * http://connectorz.adam-bien.com
