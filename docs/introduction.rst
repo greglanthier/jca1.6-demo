@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This site is intended to serve as an introduction to JCA 1.6 (otherwise known as `JSR 322 - JavaTM EE Connector Architecture 1.6 <https://jcp.org/aboutJava/communityprocess/final/jsr322/index.html>`_).
+This site is intended to serve as an introduction to JCA 1.6 (otherwise known as `JSR 322 - Java (tm) EE Connector Architecture 1.6 <https://jcp.org/aboutJava/communityprocess/final/jsr322/index.html>`_).
 
 What is JCA?
 ------------
