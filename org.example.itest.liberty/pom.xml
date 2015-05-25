@@ -80,7 +80,6 @@
 							<features>
 								<acceptLicense>true</acceptLicense>
 								<feature>jca-1.6</feature>
-								<feature>jndi-1.0</feature>
 							</features>
 						</configuration>
 					</execution>
