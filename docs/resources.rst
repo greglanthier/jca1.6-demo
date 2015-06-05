@@ -14,4 +14,4 @@ Resources
 
 * `Introduction to the J2EE Connector Architecture <http://www.ibm.com/developerworks/java/tutorials/j-jca/j-jca.html>`_ by Willy Farrell (2002).
 
-* `Javaee UDP resource adapter example <http://www.apprigger.com/2011/06/javaee-udp-resource-adapter-example/>`_ by App Rigger B.V. (2011)
+* `JavaEE UDP resource adapter example <http://www.apprigger.com/2011/06/javaee-udp-resource-adapter-example/>`_ by App Rigger B.V. (2011)
